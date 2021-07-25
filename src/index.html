@@ -11,7 +11,17 @@
         integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="loader.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"
+        integrity="sha512-jq8sZI0I9Og0nnZ+CfJRnUzNSDKxr/5Bvha5bn7AHzTnRyxUfpUArMzfH++mwE/hb2efOo1gCAgI+1RMzf8F7g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -21,56 +31,99 @@
         </div>
     </header>
     <main>
+        <canvas class="background"></canvas>
+
         <span id="subtitle">
             To have
             <select name="amount" id="amount-select">
-                <option value="1000000">$1,000,000</option>
+                <option value="1000000" selected>$1,000,000</option>
                 <option value="1000">$1,000</option>
+                <option value="100">$100</option>
+                <option value="10">$10</option>
                 <option value="1">$1</option>
             </select>
             today, you had to invest
         </span>
-
-        <h1 id="sum">&emsp;</h1>
+        <h1 id="sum">
+        </h1>
+        <h1 id="loader">
+            <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </h1>
         <span>
             in
             <select name="currency" id="currency-select">
-                <option value="bitcoin">Bitcoin</option>
-                <option value="etherium">Etherium</option>
+                <option value="bitcoin" selected>Bitcoin</option>
+                <option value="ethereum">Etherium</option>
                 <option value="dogecoin">Dogecoin</option>
             </select>
-            <select name="date" id="date-select">
-                <option value="180" selected>3 month</option>
+            <select name="date" id="days-delta-select">
+                <option value="2190">6 years</option>
+                <option value="1095">3 years</option>
+                <option value="365">1 year</option>
+                <option value="182">6 month</option>
+                <option value="90" selected>3 month</option>
+                <option value="60">2 month</option>
                 <option value="30">1 month</option>
                 <option value="7">1 week</option>
                 <option value="1">1 day</option>
             </select>
             ago
         </span>
-        </p>
 
     </main>
+    <div class="calculator">
+        <div class="container">
+            <h1>How this is calculated?</h1>
+            <p>
+                At the <span class="date-start"></span>, <span class="currency"></span>
+                was trading for approximately
+                <span id="cost-start" class="accent"></span>.
+                So, <span id="usd-amount-start" class="accent"></span> would have
+                bought approximately <span class="coin-amount accent"></span> coins, not
+                including transaction costs.
+
+            </p>
+            <p>
+                As of <span id="date-end"></span>, <span class="currency"></span>
+                trades for <span id="cost-end" class="accent"></span>.
+                Hence your <span class="coin-amount accent"></span> coins now costs
+                <span class="usd-amount-end accent"></span>
+            </p>
+            <h1>Return on Investment</h1>
+            <p>
+                Return on Investment of <span class="currency"></span> over the
+                selected period is <span id="roi" class="accent"></span>.
+            </p>
+            <p>
+                Hence, if you invested <span class="usd-amount-end accent"></span> in
+                <span class="currency"></span> <span class="date-start"></span>, today
+                you will have <span id="usd-amount-roi" class="accent"></span>.
+
+            </p>
+
+        </div>
+    </div>
     <footer>
         <div class="container">
             <p>The information contained in this website is for general information
-                purposes
-                only.</p>
+                purposes only
+            </p>
+            <p>Currency data provided by
+                <a href="https://www.coingecko.com/en/api">CoinGecko API</a>
+            </p>
             <p class="copyright-text">
-                &copy 2021 by
+                Created in 2021 by
                 <a href="https://github.com/vhsw">
                     Alexey Dubrov
                 </a>
             </p>
         </div>
     </footer>
-    <canvas class="background"></canvas>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-        crossorigin="anonymous"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"
-        integrity="sha512-jq8sZI0I9Og0nnZ+CfJRnUzNSDKxr/5Bvha5bn7AHzTnRyxUfpUArMzfH++mwE/hb2efOo1gCAgI+1RMzf8F7g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script.js"></script>
 </body>
 
