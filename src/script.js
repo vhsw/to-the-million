@@ -132,11 +132,10 @@ $(function () {
     $("#days-delta-select").val(days);
     update();
     setInterval(animateSum, dt * 1000);
-    const minDistance = Math.min($(document).width(), $(document).height()) / 4;
     Particles.init({
         selector: ".background",
         connectParticles: true,
         color: "#5196ca",
-        minDistance: minDistance,
+        minDistance: Math.min($(document).width(), $(document).height()) / 5,
     });
 });
