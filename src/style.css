@@ -46,6 +46,9 @@ select {
 select + select {
   margin-left: 0.5em;
 }
+select > option {
+  color: initial;
+}
 #sum {
   display: none;
   font-weight: 800;
